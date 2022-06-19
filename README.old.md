@@ -13,4 +13,9 @@ npx npx create-react-app .
 
 isRequired-вказує на обов'язкове значення
 
-npm install --save husky lint-staged prettier
+npm install --save husky lint-staged prettier додати файли конфігурації
+
+.huskyrc { "hooks": { "pre-commit": "lint-staged" } }
+
+.lintstagedrc { "src/**/\*.{json,css,scss,md}": ["prettier --write"],
+"src/**/\*.{js,jsx,ts,tsx}": ["prettier --write", "eslint --fix"] }

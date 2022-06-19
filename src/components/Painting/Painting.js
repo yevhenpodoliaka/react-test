@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import defaultImg from './default.jpg'
- function Painting({
+import defaultImg from './default.jpg';
+import s from './Painting.module.css';
+function Painting({
   imgUrl = defaultImg,
   title,
   price,
@@ -9,14 +10,14 @@ import defaultImg from './default.jpg'
   quantity,
 }) {
   return (
-    <div>
+    <div className={s.container}>
       <img src={imgUrl} alt={title} width="480" />
       <h2>{title}</h2>
       <p>
         Автор: <a href={authorUrl}>{author}</a>
       </p>
       <p>Вартість: {price} кредитів</p>
-      <p>На складі :{quantity<10? 'закінчується':' є в наявності'}</p>
+      <p>На складі :{quantity < 10 ? 'закінчується' : ' є в наявності'}</p>
       <button type="button">Додати до кошика</button>
     </div>
   );
