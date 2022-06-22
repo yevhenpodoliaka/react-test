@@ -6,7 +6,11 @@ function ColorPicker({ options }) {
       <h2 className={s.title}>Color Picker</h2>
       <div>
         {options.map(option => (
-          <span className={s.option} style={{ backgroundColor: option.color }}>
+          <span
+            key={option.color}
+            className={s.option}
+            style={{ backgroundColor: option.color }}
+          >
             {option.label}
           </span>
         ))}

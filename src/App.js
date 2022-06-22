@@ -1,7 +1,8 @@
-import PaintingList from './components/PaintingsList';
-// import Section from './components/Section';
+import PaintingList from './components/Painting/PaintingsList';
+import Section from './components/Section';
 import paintins from './paintings.json';
 import ColorPicker from './components/ColorPicker/ColorPicker';
+import Counter from './components/Counter/Counter';
 
 // import './App.css';
 
@@ -17,11 +18,15 @@ const colorPickerOptions = [
 export default function App() {
   return (
     <div>
-      {/* <Section title="Hello"> */}
-      <ColorPicker options={colorPickerOptions} />
-      <PaintingList items={paintins} />
-      {/* </Section> */}
-      {/* <Section /> */}
+      <Section title="section 1">
+        <ColorPicker options={colorPickerOptions} />
+      </Section>
+      <Section title="section 2">
+        <PaintingList items={paintins} />
+      </Section>
+      <Section title="section 3">
+        <Counter initialValue={0} />
+      </Section>
     </div>
   );
 }
