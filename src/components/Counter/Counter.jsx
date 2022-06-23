@@ -8,33 +8,51 @@ class Counter extends Component {
       initialValue: 0,
   };
 
-    constructor(props) {
-         
-        super(props);
-        
-    this.handleIncrement = this.handleIncrement.bind(this);
-    this.handleDecrement = this.handleDecrement.bind(this);
-         
-          this.state = {
+state = {
               value: this.props.initialValue,
               
     };
-  }
-     handleIncrement(evt) {
-    console.log("Increment button was clicked!", evt); // працює
-         console.log("this.props: ", this.props); // Error: cannot read props of undefined
+  handleIncrement = () =>{
            this.setState(prevState => ({
-      value: prevState.value + 1,
+      value: prevState.value + this.props.step,
     }));
   }
 
-    handleDecrement(evt) {
-        console.log("Decrement button was clicked!", evt); // працює
-        console.log("this.props: ", this.props); // Error: cannot read props of undefined
+  handleDecrement =()=> {
        this.setState(prevState => ({
-      value: prevState.value - 1,
+      value: prevState.value - this.props.step,
     }));
-    }
+  }
+  
+
+
+  //   constructor(props) {
+         
+  //       super(props);
+        
+  //   // this.handleIncrement = this.handleIncrement.bind(this);
+  //   // this.handleDecrement = this.handleDecrement.bind(this);
+         
+  //         this.state = {
+  //             value: this.props.initialValue,
+              
+  //   };
+  // }
+  //    handleIncrement(evt) {
+  //   console.log("Increment button was clicked!", evt); // працює
+  //        console.log("this.props: ", this.props); // Error: cannot read props of undefined
+  //          this.setState(prevState => ({
+  //     value: prevState.value + 1,
+  //   }));
+  // }
+
+  //   handleDecrement(evt) {
+  //       console.log("Decrement button was clicked!", evt); // працює
+  //       console.log("this.props: ", this.props); // Error: cannot read props of undefined
+  //      this.setState(prevState => ({
+  //     value: prevState.value - 1,
+  //   }));
+  //   }
 
   
 

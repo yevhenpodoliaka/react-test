@@ -1,5 +1,4 @@
 import s from './ColorPicker.module.css';
-console.log(s);
 function ColorPicker({ options }) {
   return (
     <div className={s.container}>

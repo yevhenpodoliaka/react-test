@@ -1,6 +1,3 @@
-import PaintingList from './components/Painting/PaintingsList';
-import Section from './components/Section';
-import paintins from './paintings.json';
 import ColorPicker from './components/ColorPicker/ColorPicker';
 import Counter from './components/Counter/Counter';
 
@@ -17,16 +14,9 @@ const colorPickerOptions = [
 
 export default function App() {
   return (
-    <div>
-      <Section title="section 1">
-        <ColorPicker options={colorPickerOptions} />
-      </Section>
-      <Section title="section 2">
-        <PaintingList items={paintins} />
-      </Section>
-      <Section title="section 3">
-        <Counter initialValue={0} />
-      </Section>
-    </div>
+    <>
+      <ColorPicker options={colorPickerOptions} />
+      <Counter initialValue={0} step={5} />
+    </>
   );
 }
