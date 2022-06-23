@@ -9,9 +9,7 @@ function ColorPicker({ options }) {
             key={option.color}
             className={s.option}
             style={{ backgroundColor: option.color }}
-          >
-            {option.label}
-          </span>
+          ></span>
         ))}
       </div>
     </div>

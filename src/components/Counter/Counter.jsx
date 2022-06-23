@@ -1,73 +1,42 @@
-import React, { Component } from "react";
-import s from './Counter.module.css'
-
+import React, { Component } from 'react';
+import s from './Counter.module.css';
+import Controls from './Controls/Controls';
+import Value from './Value/Value';
 
 class Counter extends Component {
   static defaultProps = {
-      step: 1,
-      initialValue: 0,
+    step: 1,
+    initialValue: 0,
   };
 
-state = {
-              value: this.props.initialValue,
-              
-    };
-  handleIncrement = () =>{
-           this.setState(prevState => ({
+  state = {
+    value: this.props.initialValue,
+  };
+  handleIncrement = () => {
+    this.setState(prevState => ({
       value: prevState.value + this.props.step,
     }));
-  }
+  };
 
-  handleDecrement =()=> {
-       this.setState(prevState => ({
+  handleDecrement = () => {
+    this.setState(prevState => ({
       value: prevState.value - this.props.step,
     }));
-  }
-  
-
-
-  //   constructor(props) {
-         
-  //       super(props);
-        
-  //   // this.handleIncrement = this.handleIncrement.bind(this);
-  //   // this.handleDecrement = this.handleDecrement.bind(this);
-         
-  //         this.state = {
-  //             value: this.props.initialValue,
-              
-  //   };
-  // }
-  //    handleIncrement(evt) {
-  //   console.log("Increment button was clicked!", evt); // працює
-  //        console.log("this.props: ", this.props); // Error: cannot read props of undefined
-  //          this.setState(prevState => ({
-  //     value: prevState.value + 1,
-  //   }));
-  // }
-
-  //   handleDecrement(evt) {
-  //       console.log("Decrement button was clicked!", evt); // працює
-  //       console.log("this.props: ", this.props); // Error: cannot read props of undefined
-  //      this.setState(prevState => ({
-  //     value: prevState.value - 1,
-  //   }));
-  //   }
-
-  
-
+  };
 
   render() {
-    const { step } = this.props;
 
     return (
       <div className={s.wrap}>
-        <span className={s.num}>{this.state.value}</span>
-        <button className={s.btn} type="button" onClick={this.handleIncrement}>Increment by {step}</button>
-        <button className={s.btn} type="button" onClick={this.handleDecrement}>Decrement by {step}</button>
+        <Value value={this.state.value}/>
+        <Controls
+          onIncrement={this.handleIncrement}
+          onDecrement={this.handleDecrement}
+          step={this.props.step}
+        />
       </div>
     );
   }
 }
 
-export default Counter
+export default Counter;

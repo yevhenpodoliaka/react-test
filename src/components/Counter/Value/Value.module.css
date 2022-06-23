@@ -1,0 +1,7 @@
+.value {
+  display: block;
+  margin: 0 auto;
+  font-size: 64px;
+  font-family: monospace;
+  text-align: center;
+}

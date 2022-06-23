@@ -1,0 +1,19 @@
+.dropdown {
+    position: relative;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.dropdown__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background-color: teal;
+    color: white;
+}
+button{
+    margin:0 5px;
+}
