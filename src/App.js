@@ -1,6 +1,7 @@
-import ColorPicker from './components/ColorPicker/ColorPicker';
-import Counter from './components/Counter/Counter';
-import Dropdown from './components/Dropdown/Dropdown';
+import ColorPicker from './components/ColorPicker';
+import Counter from './components/Counter';
+import Dropdown from './components/Dropdown';
+import TodoList from './components/TodoList';
 
 // import './App.css';
 
@@ -19,6 +20,7 @@ export default function App() {
       <Dropdown />
       <ColorPicker options={colorPickerOptions} />
       <Counter initialValue={0} step={1} />
+      <TodoList />
     </>
   );
 }
