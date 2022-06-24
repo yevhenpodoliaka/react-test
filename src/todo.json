@@ -1,0 +1,5 @@
+[
+  { "id": "id-1", "text": "пункт 1", "completed": true },
+  { "id": "id-2", "text": "пункт 2", "completed": false },
+  { "id": "id-3", "text": "пункт 3", "completed": false }
+]

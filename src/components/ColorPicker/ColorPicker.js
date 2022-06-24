@@ -17,14 +17,16 @@ class ColorPicker extends Component {
     return btnClasses.join(' ');
   };
   render() {
-    const activeBtnLabel = this.props.options[this.state.activeBtnInx];
+    const { options } = this.props;
+    const { activeBtnInx } = this.state;
+    const { label } = options[activeBtnInx];
 
     return (
       <div className={s.container}>
         <h2>Color Picker</h2>
-        <p>Color name:{activeBtnLabel.label}</p>
+        <p>Color name:{label}</p>
         <div>
-          {this.props.options.map(({ label, color }, index) => (
+          {options.map(({ label, color }, index) => (
             <button
               key={label}
               className={this.makeBtnClasses(index)}
@@ -41,8 +43,3 @@ class ColorPicker extends Component {
 }
 
 export default ColorPicker;
-
-// border:
-//                 index === this.state.activeBtnInx
-//                   ? '5px solid black '
-//                   : 'none',

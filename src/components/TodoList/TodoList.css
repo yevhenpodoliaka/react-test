@@ -1,0 +1,9 @@
+.TodoList{
+    border: 1px solid black;
+
+}
+.TodoList__item{
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+}
