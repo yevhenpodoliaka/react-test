@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 // import Dropdown from './components/Dropdown';
 import TodoList from './components/TodoList';
 import initialTodos from './todo.json';
+import TodoEditer from './components/TodoList/TodoEditer';
+import TodoFilter from './components/TodoList/TodoFilter';
 
 // import './App.css';
 
@@ -19,19 +21,50 @@ import initialTodos from './todo.json';
 class App extends Component {
   state = {
     todos: initialTodos,
+    filter: '',
   };
 
+  addTodo = text => {
+    const todo = {
+      id: Date.now(),
+      text,
+      completed: false,
+    };
+    this.setState(prevState => ({
+      todos: [todo, ...prevState.todos],
+    }));
+  };
+  complitedTodo = todoId => {
+    this.setState(prevState => ({
+      todos: prevState.todos.map(todo => {
+        if (todo.id === todoId) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      }),
+    }));
+  };
   deleteTodo = todoId => {
     this.setState(prevState => ({
       todos: prevState.todos.filter(todo => todo.id !== todoId),
     }));
   };
+
+  onChangeFilter = e => this.setState({ filter: e.currentTarget.value });
+
   render() {
-    const { todos } = this.state;
+    const { todos, filter } = this.state;
 
     const completedTodoCount = todos.reduce(
       (total, todo) => (todo.completed ? total + 1 : total),
       0,
+    );
+    const filtredTodos = filter.toLowerCase();
+    const visibleTodos = todos.filter(todo =>
+      todo.text.toLowerCase().includes(filtredTodos),
     );
     return (
       <>
@@ -43,7 +76,13 @@ class App extends Component {
           <p>кількість завдань: {todos.length}</p>
           <p>кількість виконаних завдань:{completedTodoCount}</p>
         </div>
-        <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
+        <TodoEditer onSubmit={this.addTodo} />
+        <TodoFilter value={filter} onChangeFilter={this.onChangeFilter} />
+        <TodoList
+          todos={visibleTodos}
+          onDeleteTodo={this.deleteTodo}
+          togglleComplited={this.complitedTodo}
+        />
       </>
     );
   }
