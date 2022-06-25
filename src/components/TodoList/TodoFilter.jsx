@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
+const TodoFilter = ({ value, onChangeFilter }) => {
+  return (
+    <label>
+      filter
+      <input type="text" value={value} onChange={onChangeFilter} />
+    </label>
+  );
+};
 
-const TodoFilter = ({value,onChangeFilter}) => {
-    return (<label>
-          filter
-          <input type="text" value={value} onChange={onChangeFilter} />
-        </label>)
-}
-
-export default TodoFilter
-  
+export default TodoFilter;

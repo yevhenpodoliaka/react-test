@@ -55,17 +55,30 @@ class App extends Component {
 
   onChangeFilter = e => this.setState({ filter: e.currentTarget.value });
 
-  render() {
-    const { todos, filter } = this.state;
+  getVisibleTodos = () => {
+    const { filter, todos } = this.state;
+    const normalizedFilter = filter.toLowerCase();
 
-    const completedTodoCount = todos.reduce(
+    return todos.filter(todo =>
+      todo.text.toLowerCase().includes(normalizedFilter),
+    );
+  };
+
+  calculateCompletedTodos = () => {
+    const { todos } = this.state;
+    return todos.reduce(
       (total, todo) => (todo.completed ? total + 1 : total),
       0,
     );
-    const filtredTodos = filter.toLowerCase();
-    const visibleTodos = todos.filter(todo =>
-      todo.text.toLowerCase().includes(filtredTodos),
-    );
+  };
+
+  render() {
+    const { todos, filter } = this.state;
+
+    const totalTodoCount = todos.length;
+    const completedTodoCount = this.calculateCompletedTodos();
+    const visibleTodos = this.getVisibleTodos();
+
     return (
       <>
         {/* <Dropdown />
@@ -73,7 +86,7 @@ class App extends Component {
         <Counter initialValue={0} step={1} /> */}
 
         <div>
-          <p>кількість завдань: {todos.length}</p>
+          <p>кількість завдань: {totalTodoCount}</p>
           <p>кількість виконаних завдань:{completedTodoCount}</p>
         </div>
         <TodoEditer onSubmit={this.addTodo} />
