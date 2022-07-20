@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 // import Counter from './components/Counter';
 // import Dropdown from './components/Dropdown';
 import TodoList from './components/TodoApp/TodoList/TodoList';
-import initialTodos from './todo.json';
+// import initialTodos from './todo.json';
 import TodoEditer from './components/TodoApp/TodoEditer/TodoEditer';
 import TodoFilter from './components/TodoApp/TodoFilter/TodoFilter';
-
+import Modal from './components/Modal/Modal';
 // import './App.css';
 
 // const colorPickerOptions = [
@@ -20,13 +20,18 @@ import TodoFilter from './components/TodoApp/TodoFilter/TodoFilter';
 
 class App extends Component {
   state = {
-    todos: initialTodos,
+    todos: [],
     filter: '',
+    showModal:false,
   };
-
+  toggleModal = () => {
+    this.setState(({showModal})=> ({
+      showModal:!showModal
+    }))
+}
   addTodo = text => {
     const todo = {
-      id: Date.now(),
+      id: String(Date.now()),
       text,
       completed: false,
     };
@@ -71,9 +76,27 @@ class App extends Component {
       0,
     );
   };
+  componentDidMount() {
+    console.log('componentDidMount');
+    const storageTodos = JSON.parse(localStorage.getItem('todos')) 
+    if (storageTodos) {
+         this.setState({todos:storageTodos})
+    }
 
+ 
+  }
+  componentDidUpdate(prevProps,prevState) {
+    console.log('componentDidUpdate', prevState);
+    console.log(this.state);
+    if (this.state.todos!==prevState.todos) {
+      console.log('new');
+      localStorage.setItem('todos', JSON.stringify(this.state.todos))
+    }
+
+  }
   render() {
-    const { todos, filter } = this.state;
+    console.log('App render');
+    const { todos, filter,showModal } = this.state;
 
     const totalTodoCount = todos.length;
     const completedTodoCount = this.calculateCompletedTodos();
@@ -84,6 +107,10 @@ class App extends Component {
         {/* <Dropdown />
         <ColorPicker options={colorPickerOptions} />
         <Counter initialValue={0} step={1} /> */}
+        <button type='button' onClick={this.toggleModal}>open</button>
+        {showModal&&<Modal><h2>modal</h2> <button type="button" onClick={this.toggleModal}>
+          close
+        </button></Modal>}
 
         <div>
           <p>кількість завдань: {totalTodoCount}</p>
@@ -96,6 +123,7 @@ class App extends Component {
           onDeleteTodo={this.deleteTodo}
           togglleComplited={this.complitedTodo}
         />
+      
       </>
     );
   }

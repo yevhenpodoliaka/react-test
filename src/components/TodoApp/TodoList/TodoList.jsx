@@ -16,11 +16,11 @@ const TodoList = ({ todos, onDeleteTodo, togglleComplited }) => (
   </ul>
 );
 TodoList.propTypes = {
-  todos: PropTypes.shape({
+  todos: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired
-  }),
+  })),
   onDeleteTodo: PropTypes.func.isRequired,
   togglleComplited: PropTypes.func.isRequired
  
