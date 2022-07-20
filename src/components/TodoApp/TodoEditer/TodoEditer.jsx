@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './TodoList.css'
+
 
 class TodoEditer extends Component {
     state = {
