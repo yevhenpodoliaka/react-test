@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 // import ColorPicker from './components/ColorPicker';
 // import Counter from './components/Counter';
 // import Dropdown from './components/Dropdown';
-import TodoList from './components/TodoApp/TodoList/TodoList';
+import TodoList from './components/TodoApp/TodoList';
 // import initialTodos from './todo.json';
-import TodoEditer from './components/TodoApp/TodoEditer/TodoEditer';
-import TodoFilter from './components/TodoApp/TodoFilter/TodoFilter';
+import TodoEditer from './components/TodoApp/TodoEditer';
+import TodoFilter from './components/TodoApp/TodoFilter';
 import Modal from './components/Modal/Modal';
 import IconBtn from './components/IconBtn/IconBtn';
 import {ReactComponent as AddIcon} from './icons/add.svg'

@@ -1,26 +1,24 @@
 import PropTypes from 'prop-types'
-import IconBtn from '../../IconBtn/IconBtn'
-import { ReactComponent as DeleteIcon } from '../../../icons/delete.svg'
-import './Todo.css'
+import IconBtn from '../IconBtn/IconBtn'
+import { ReactComponent as DeleteIcon } from '../../icons/delete.svg'
+import styled from 'styled-components';
 
 
 const Todo = ({ text, completed, togglleComplited, onDeleteTodo }) => {
-    return   <div  className="Todo"> 
+    return   <TodoItem> 
     <input
           type="checkbox"
           className="Checkbox"
           checked={completed}
           onChange={togglleComplited}
         />
-        <p
-          className={completed ? 'Todo__text--complited' : 'Todo__text'}
-        >
+        <TodoText completed={completed}>
           {text}
-      </p>
+      </TodoText>
       <IconBtn  onClick={onDeleteTodo} aria-label="delete todo">
         <DeleteIcon width="12" height="12" />
       </IconBtn>
-        </div> 
+        </TodoItem> 
 }
 Todo.propTypes = {
   text: PropTypes.string.isRequired,
@@ -29,3 +27,18 @@ Todo.propTypes = {
   onDeleteTodo: PropTypes.func.isRequired
 }
 export default Todo
+
+const TodoItem= styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+    border: 1px solid blue;
+    border-radius: 4px;
+`
+const TodoText = styled.p`
+ text-decoration:${({completed} )=> {
+  if (completed) {
+  return "line-through"
+ }
+ }}
+`

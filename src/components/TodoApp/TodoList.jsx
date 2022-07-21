@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import './TodoList.css';
-import Todo from '../Todo/Todo';
+import Todo from './Todo';
 const TodoList = ({ todos, onDeleteTodo, togglleComplited }) => (
   <ul className="TodoList">
     {todos.map(({ id, text, completed }) => (

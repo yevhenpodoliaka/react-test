@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Btn } from './IconBtn.styled';
+import styled from 'styled-components';
 
 
 const IconBtn = ({ children, onClick, ...allyProps }) => (
@@ -21,3 +21,17 @@ IconBtn.propTypes = {
 };
 
 export default IconBtn;
+
+const Btn = styled.button`   
+  margin: 0;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font: inherit;
+    background-color: grey;
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;`

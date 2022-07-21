@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import s from './TodoEditer.module.css'
+import styled from 'styled-components';
 
 
 class TodoEditer extends Component {
@@ -19,11 +19,22 @@ class TodoEditer extends Component {
 
     render() {
         return (
-            <form className={s.form}  onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit}>
                 <textarea value={this.state.text} onChange={this.handleChange}></textarea>
-                <button className={s.btn} type="submit">Створити</button>
-        </form>
+                <Btn type="submit">Створити</Btn>
+        </Form>
     )
 }
 } 
 export default TodoEditer
+
+
+const Form = styled.form`
+   display: flex;
+      flex-direction: column;`
+     
+
+const Btn = styled.button` 
+  margin-top: 10px;`
+   
+  
