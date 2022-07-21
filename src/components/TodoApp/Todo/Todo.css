@@ -1,0 +1,12 @@
+.Todo{
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+    border: 1px solid blue;
+    border-radius: 4px;
+}
+
+  .Todo__text--complited{
+      text-decoration: line-through;
+  
+  }

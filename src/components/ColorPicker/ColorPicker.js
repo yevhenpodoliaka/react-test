@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import s from './ColorPicker.module.css';
 
-class ColorPicker extends Component {
+class ColorPicker extends PureComponent {
   state = {
     activeBtnInx: 0,
   };
+  // якщо використовувати наслідування відComponent
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return nextState.activeBtnInx !== this.state.activeBtnInx;
+  // }
   setActiveIndex = index => {
     this.setState({ activeBtnInx: index });
   };
@@ -20,6 +25,7 @@ class ColorPicker extends Component {
     const { options } = this.props;
     const { activeBtnInx } = this.state;
     const { label } = options[activeBtnInx];
+    console.log(Date.now());
 
     return (
       <div className={s.container}>

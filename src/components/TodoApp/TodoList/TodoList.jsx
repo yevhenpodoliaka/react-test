@@ -5,7 +5,7 @@ import Todo from '../Todo/Todo';
 const TodoList = ({ todos, onDeleteTodo, togglleComplited }) => (
   <ul className="TodoList">
     {todos.map(({ id, text, completed }) => (
-      <li className="TodoList__item" key={id}>
+      <li key={id}>
         <Todo
           text={text}
           completed={completed}

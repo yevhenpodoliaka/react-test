@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import s from './TodoEditer.module.css'
 
 
 class TodoEditer extends Component {
@@ -18,9 +19,9 @@ class TodoEditer extends Component {
 
     render() {
         return (
-            <form className="TodoEditer"  onSubmit={this.handleSubmit}>
+            <form className={s.form}  onSubmit={this.handleSubmit}>
                 <textarea value={this.state.text} onChange={this.handleChange}></textarea>
-                <button type="submit">Створити</button>
+                <button className={s.btn} type="submit">Створити</button>
         </form>
     )
 }

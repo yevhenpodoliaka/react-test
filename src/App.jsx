@@ -7,7 +7,8 @@ import TodoList from './components/TodoApp/TodoList/TodoList';
 import TodoEditer from './components/TodoApp/TodoEditer/TodoEditer';
 import TodoFilter from './components/TodoApp/TodoFilter/TodoFilter';
 import Modal from './components/Modal/Modal';
-// import './App.css';
+import IconBtn from './components/IconBtn/IconBtn';
+import {ReactComponent as AddIcon} from './icons/add.svg'
 
 // const colorPickerOptions = [
 //   { label: 'red', color: '#F44336' },
@@ -24,6 +25,21 @@ class App extends Component {
     filter: '',
     showModal:false,
   };
+    componentDidMount() {
+
+    const storageTodos = JSON.parse(localStorage.getItem('todos')) 
+    if (storageTodos) {
+         this.setState({todos:storageTodos})
+    }
+
+ 
+  }
+  componentDidUpdate(prevProps,prevState) {
+    if (this.state.todos!==prevState.todos) {
+      localStorage.setItem('todos', JSON.stringify(this.state.todos))
+    }
+
+  }
   toggleModal = () => {
     this.setState(({showModal})=> ({
       showModal:!showModal
@@ -38,6 +54,7 @@ class App extends Component {
     this.setState(prevState => ({
       todos: [todo, ...prevState.todos],
     }));
+    this.toggleModal()
   };
   complitedTodo = todoId => {
     this.setState(prevState => ({
@@ -76,26 +93,8 @@ class App extends Component {
       0,
     );
   };
-  componentDidMount() {
-    console.log('componentDidMount');
-    const storageTodos = JSON.parse(localStorage.getItem('todos')) 
-    if (storageTodos) {
-         this.setState({todos:storageTodos})
-    }
 
- 
-  }
-  componentDidUpdate(prevProps,prevState) {
-    console.log('componentDidUpdate', prevState);
-    console.log(this.state);
-    if (this.state.todos!==prevState.todos) {
-      console.log('new');
-      localStorage.setItem('todos', JSON.stringify(this.state.todos))
-    }
-
-  }
   render() {
-    console.log('App render');
     const { todos, filter,showModal } = this.state;
 
     const totalTodoCount = todos.length;
@@ -104,19 +103,21 @@ class App extends Component {
 
     return (
       <>
-        {/* <Dropdown />
-        <ColorPicker options={colorPickerOptions} />
-        <Counter initialValue={0} step={1} /> */}
-        <button type='button' onClick={this.toggleModal}>open</button>
-        {showModal&&<Modal><h2>modal</h2> <button type="button" onClick={this.toggleModal}>
-          close
-        </button></Modal>}
+        {/* <Dropdown /> */}
+        {/* <ColorPicker options={colorPickerOptions} /> */}
+        {/* <Counter initialValue={0} step={1} /> */}
+        <IconBtn onClick={this.toggleModal}  aria-label="add todo">
+          <AddIcon width="40" height="40"/>
+        </IconBtn>
+        {showModal && <Modal onClose={this.toggleModal}>
+          <TodoEditer onSubmit={this.addTodo} />
+        </Modal>}
 
         <div>
           <p>кількість завдань: {totalTodoCount}</p>
           <p>кількість виконаних завдань:{completedTodoCount}</p>
         </div>
-        <TodoEditer onSubmit={this.addTodo} />
+       
         <TodoFilter value={filter} onChangeFilter={this.onChangeFilter} />
         <TodoList
           todos={visibleTodos}

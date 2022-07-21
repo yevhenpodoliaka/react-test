@@ -1,19 +1,6 @@
 .TodoList{
-    border: 1px solid black;
+  background-color: beige;
+
 
 }
-.TodoList__item{
-    display: flex;
-    justify-content: space-between;
-    padding: 4px;
-}
 
-  .TodoList__text--complited{
-      text-decoration: line-through;
-  
-  }
-  .TodoEditer{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }

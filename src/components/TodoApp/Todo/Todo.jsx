@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types'
+import IconBtn from '../../IconBtn/IconBtn'
+import { ReactComponent as DeleteIcon } from '../../../icons/delete.svg'
+import './Todo.css'
+
+
 const Todo = ({ text, completed, togglleComplited, onDeleteTodo }) => {
-    return   <> 
+    return   <div  className="Todo"> 
     <input
           type="checkbox"
           className="Checkbox"
@@ -8,12 +13,14 @@ const Todo = ({ text, completed, togglleComplited, onDeleteTodo }) => {
           onChange={togglleComplited}
         />
         <p
-          className={completed ? 'TodoList__text--complited' : 'TodoList__text'}
+          className={completed ? 'Todo__text--complited' : 'Todo__text'}
         >
           {text}
-        </p>
-        <button onClick={onDeleteTodo}>delete</button>
-        </> 
+      </p>
+      <IconBtn  onClick={onDeleteTodo} aria-label="delete todo">
+        <DeleteIcon width="12" height="12" />
+      </IconBtn>
+        </div> 
 }
 Todo.propTypes = {
   text: PropTypes.string.isRequired,
