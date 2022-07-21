@@ -1,5 +1,5 @@
-.btn {
-    margin: 0;
+import styled from 'styled-components';
+export const Btn=styled.button`    margin: 0;
     padding: 10px;
     border: none;
     border-radius: 50%;
@@ -10,5 +10,4 @@
 
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-}
+    justify-content: center;`

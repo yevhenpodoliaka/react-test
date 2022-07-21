@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
-import s from './Modal.module.css';
+import { Backdrop ,ModalCard} from './Modal.styled';
 
 const modalEl = document.querySelector('#modal');
 class Modal extends Component {
@@ -24,9 +24,9 @@ class Modal extends Component {
   };
   render() {
     return createPortal(
-      <div className={s.backdrop}  onClick={this.handleBackdropClick}>
-        <div className={s.modal}>{this.props.children}</div>
-      </div>,modalEl
+      <Backdrop   onClick={this.handleBackdropClick}>
+        <ModalCard >{this.props.children}</ModalCard>
+      </Backdrop>,modalEl
     );
   }
 }
