@@ -9,6 +9,7 @@ import TodoFilter from './components/TodoApp/TodoFilter';
 import Modal from './components/Modal/Modal';
 import IconBtn from './components/IconBtn/IconBtn';
 import {ReactComponent as AddIcon} from './icons/add.svg'
+import Clock from './components/Clock/Clock';
 
 // const colorPickerOptions = [
 //   { label: 'red', color: '#F44336' },
@@ -124,7 +125,7 @@ class App extends Component {
           onDeleteTodo={this.deleteTodo}
           togglleComplited={this.complitedTodo}
         />
-      
+      <Clock/>
       </>
     );
   }
