@@ -29,7 +29,8 @@ class Dropdown extends Component {
           {visible ? 'close' : 'open'}
         </button>
 
-        {visible && <div className={s.dropdown__menu}>menu</div>}
+        {visible && <div className={s.dropdown__menu}>{this.props.children}</div>}
+       
       </div>
     );
   }
