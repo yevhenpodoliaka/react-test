@@ -3,9 +3,10 @@ import TodoList from './TodoList';
 import initialTodos from '../../todo.json';
 import TodoEditer from './TodoEditer';
 import TodoFilter from './TodoFilter';
-import Modal from '../Modal/Modal';
-import IconBtn from '../IconBtn/IconBtn';
+import Modal from '../../components/Modal/Modal';
+import IconBtn from '../../components/IconBtn/IconBtn';
 import { ReactComponent as AddIcon } from '../../icons/add.svg';
+
 
 export default function AppTodo() {
   const [todos, setTodos] = useState(() => { return JSON.parse(localStorage.getItem('todos')) ?? [...initialTodos]});
@@ -81,7 +82,6 @@ export default function AppTodo() {
         <p>кількість завдань: {totalTodoCount}</p>
         <p>кількість виконаних завдань:{completedTodoCount}</p>
       </div>
-
       <TodoFilter value={filter} onChangeFilter={onChangeFilter} />
       <TodoList
         todos={visibleTodos}

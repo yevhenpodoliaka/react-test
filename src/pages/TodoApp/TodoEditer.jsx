@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export default function TodoEditer({ onSubmit }) {
   const [text, setText] = useState('');
   const handleChange = e => {
-    this.setState({ text: e.currentTarget.value });
+    setText( e.currentTarget.value);
   };
   const handleSubmit = e => {
     e.preventDefault();

@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components';
 
-
-const IconBtn = ({ children, onClick, ...allyProps }) => (
+ const IconBtn = ({ children, onClick, ...allyProps }) => (
   <Btn type="button"  onClick={onClick} {...allyProps}>
     {children}
   </Btn>
@@ -20,7 +19,8 @@ IconBtn.propTypes = {
   'aria-label': PropTypes.string.isRequired,
 };
 
-export default IconBtn;
+
+export default IconBtn
 
 const Btn = styled.button`   
   margin: 0;

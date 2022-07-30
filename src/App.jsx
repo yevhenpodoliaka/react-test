@@ -1,34 +1,23 @@
-import React, { Component } from 'react';
-// import TodoApp from './components/TodoApp/TodoApp';
-import ColorPicker from './components/ColorPicker';
-import Counter from './components/Counter';
-import Dropdown from './components/Dropdown';
-// import Modal from './components/Modal/Modal';
-import Clock from './components/Clock/Clock';
-import Form from './components/Form/Form';
-const colorPickerOptions = [
-  { label: 'red', color: '#F44336' },
-  { label: 'green', color: '#4CAF50' },
-  { label: 'blue', color: '#2196F3' },
-  { label: 'grey', color: '#607D8B' },
-  { label: 'pink', color: '#E91E63' },
-  { label: 'indigo', color: '#3F51B5' },
-];
+import { useState } from 'react';
+import Header from './components/Header/Header';
+import TodoApp from './pages/TodoApp/TodoApp';
+import NewsApp from './pages/NewsApp/NewsApp';
+import ImagesApp from './pages/ImagesApp/ImagesApp';
 
-class App extends Component {
-  render() {
+export default function App () {
+  const [currentPage, setCurrentPage] = useState('Todos')
+  const handelCangePage = (e) => {
+console.log(e.target.textContent);
+    setCurrentPage(e.target.textContent)
+  }
     return (
       <>
-        <Dropdown>
-        <Clock />
-        </Dropdown>
-        <ColorPicker options={colorPickerOptions} />
-        <Counter initialValue={0} step={1} />
-    {/* <TodoApp/> */}
-      
-        <Form/>
+        <Header onClick={handelCangePage} />
+      { currentPage==='Todos' &&<TodoApp/>}
+      { currentPage==='News' &&<NewsApp/>}
+      { currentPage==='Images' &&<ImagesApp/>}
       </>
     );
   }
-}
-export default App;
+
+

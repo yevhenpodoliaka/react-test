@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import IconBtn from '../IconBtn/IconBtn'
+import IconBtn from '../../components/IconBtn/IconBtn'
 import { ReactComponent as DeleteIcon } from '../../icons/delete.svg'
 import styled from 'styled-components';
 
