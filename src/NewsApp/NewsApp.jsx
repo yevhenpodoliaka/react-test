@@ -1,6 +1,6 @@
 import  { useState,useEffect} from 'react';
-import Searchbar from '../../components/Searchbar/Searchbar';
-import newsApiservice from '../../service/newsApiService'
+import Searchbar from '../components/Searchbar/Searchbar';
+import newsApiservice from '../service/newsApiService'
 export default function NewsApp() {
     const[query,setQuery]=useState('')
     const[page,setPage]=useState(1)

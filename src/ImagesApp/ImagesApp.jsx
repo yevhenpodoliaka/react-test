@@ -1,4 +1,4 @@
-import Searchbar from '../../components/Searchbar/Searchbar'
+import Searchbar from '../components/Searchbar/Searchbar'
 export default function ImagesApp(){
     return <>
         <Searchbar placeholder={'search images'}/>

@@ -1,11 +1,11 @@
 import { useState,useEffect } from 'react';
 import TodoList from './TodoList';
-import initialTodos from '../../todo.json';
+import initialTodos from '../todo.json';
 import TodoEditer from './TodoEditer';
 import TodoFilter from './TodoFilter';
-import Modal from '../../components/Modal/Modal';
-import IconBtn from '../../components/IconBtn/IconBtn';
-import { ReactComponent as AddIcon } from '../../icons/add.svg';
+import Modal from '../components/Modal/Modal';
+import IconBtn from '../components/IconBtn/IconBtn';
+import { ReactComponent as AddIcon } from '../icons/add.svg';
 
 
 export default function AppTodo() {
