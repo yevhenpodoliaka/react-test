@@ -1,12 +1,12 @@
-// import TodoApp from './TodoApp/TodoApp';
-import NewsApp from './NewsApp/NewsApp';
+import TodoApp from './TodoApp/TodoApp';
+
 
 
 export default function App () {
     return (
       <>
-        {/* <TodoApp /> */}
-        <NewsApp/>
+        <TodoApp />
+     
       </>
     );
   }
