@@ -1,12 +1,12 @@
-// import TodoApp from './TodoApp/TodoApp';
-import SearchImgApp from "./SearchImg/SearchImgApp";
+import TodoApp from './TodoApp/TodoApp';
+
 
 
 export default function App () {
     return (
       <>
-        {/* <TodoApp /> */}
-        <SearchImgApp/>
+        <TodoApp />
+   
      
       </>
     );
