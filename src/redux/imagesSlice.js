@@ -4,11 +4,16 @@ const initialState = {
   items: [],
   query:'',
   page: 1,
+  status: null,
+  error:null,
 };
 
 
-export const getImg = createAsyncThunk('items/getImg', async (_, { rejectWithValue, dispatch }) => {
-  const res = await fetchImg('cat', 1);
+export const getImg = createAsyncThunk('items/getImg', async (_, { rejectWithValue, dispatch, getState }) => {
+  const state = getState()
+  const { page, query } = state.images
+
+  const res = await fetchImg(query, page);
   dispatch(setItems(res.hits))
 })
 
@@ -23,7 +28,7 @@ export const imagesSlice = createSlice({
       state.query = actions.payload;
     },
     setItems(state, actions) {
-      state.items.push(actions.payload);
+      state.items.push(...actions.payload);
     },
   },
   extraReducers: {
